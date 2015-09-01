@@ -9,9 +9,12 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href='css/style.css' >
 
     <title>css3学习，以及如何结合js、html开发应用</title>
   </head>
@@ -31,9 +34,121 @@
           <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>css3：</h3>
         <h4>动画- animation</h4>
-        <p></p>  
+        <p>我们来实现一个小男孩走动的动画。</p>
+        <!-- 小男孩走动动画效果css代码 -->
+        <style type="text/css">
+            .charector {
+                position: absolute;
+                left: 0%;
+                top:50%;
+                width: 151px;
+                height: 291px;
+                background: url(./resource/images/boy.png) -0px -291px no-repeat;
+            }
+           .walk {
+                   /* 规定@keyframes 动画的名称 */
+                   animation-name: person-walk;
+                   /* 规定动画完成一个周期所花费的秒或毫秒。默认是0 */
+                   animation-duration: 950ms;
+                   /* 规定动画被播放的次数。默认是 1。infinite(循环播放) */
+                   animation-iteration-count: infinite;
+                   /* 动画切换的方式是一帧一帧的改变 */
+                   animation-timing-function: step-start;
 
+                   /* 规定@keyframes 动画的名称 */
+                   -webkit-animation-name: person-walk;
+                   /* 规定动画完成一个周期所花费的秒或毫秒。默认是0 */
+                   -webkit-animation-duration: 950ms;
+                   /* 规定动画被播放的次数。默认是 1。infinite(循环播放) */
+                   -webkit-animation-iteration-count: infinite;
+                   /* 动画切换的方式是一帧一帧的改变 */
+                   -webkit-animation-timing-function: step-start;
+           }
 
+            @keyframes person-walk {
+               0% {
+                   background-position: -0px -291px;
+               }
+               25% {
+                   background-position: -602px -0px;
+               }
+               50% {
+                   background-position: -302px -291px;
+               }
+               75% {
+                   background-position: -151px -291px;
+               }
+               100% {
+                   background-position: -0px -291px;
+               }
+            }
+
+            @-webkit-keyframes person-walk {
+               0% {
+                   background-position: -0px -291px;
+               }
+               25% {
+                   background-position: -602px -0px;
+               }
+               50% {
+                   background-position: -302px -291px;
+               }
+               75% {
+                   background-position: -151px -291px;
+               }
+               100% {
+                   background-position: -0px -291px;
+               }
+            }
+
+        </style>
+        <p>
+            
+        </p>
+        <p style="position:relative;">
+           <div class="charector walk"></div> 
+            <pre>
+                .walk {
+                   /* 规定@keyframes 动画的名称 */
+                   animation-name: person-walk;
+                   /* 规定动画完成一个周期所花费的秒或毫秒。默认是0 */
+                   animation-duration: 950ms;
+                   /* 规定动画被播放的次数。默认是 1。infinite(循环播放) */
+                   animation-iteration-count: infinite;
+                   /* 动画切换的方式是一帧一帧的改变 */
+                   animation-timing-function: step-start;
+                }
+
+                @keyframes person-walk {
+                   0% {
+                       background-position: -0px -291px;
+                   }
+                   25% {
+                       background-position: -602px -0px;
+                   }
+                   50% {
+                       background-position: -302px -291px;
+                   }
+                   75% {
+                       background-position: -151px -291px;
+                   }
+                   100% {
+                       background-position: -0px -291px;
+                   }
+                }
+            </pre>            
+        </p>  
+        <p>解释下定义的样式: 
+           定义一个名为 person-walk 的@keyframes规则，@keyfrmaes用百分比来规定变化发生的时间,
+           0%是动画的开始，100%是动画的完成，规则中有4个百分比值的变化，每个比值分别
+           通过position获取一张图片，分别是0%，25%，50%，75%，100%。在950毫秒内从0%-100%发生4次变化，
+           采用的算法是 step-start 一帧一帧的切换，通过设置infinite参数每950毫秒不断循环。
+        </p>
+        <p></p>
+        <p>技术点：css Sprites，即css精灵。 小男孩走动，靠不断的切换图片让人感觉视觉上不断在变化。
+           我们把小男孩走动的图片合成一张大图再利用css技术组合进行背景定位。
+           有 background-image、background-repeat、background-position。
+        </p>
         </section>
 
         <aside id="sidebar">
