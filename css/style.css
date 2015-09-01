@@ -101,3 +101,61 @@ li {
 		background-position: -300px -0px;
 	}
 }
+
+
+
+.boxShow{
+	width: 100%;
+	height: 150px;
+	position: relative;
+}
+/*小鸟*/
+.bird{
+	min-width: 91px;
+	min-height: 71px;
+	top:5%;
+	position: absolute;
+	right:0;
+	background: url(../resource/images/bird.png) -182px 0px no-repeat;
+}
+/*小鸟飞*/
+.birdFly {
+	animation-name: bird-fly;
+	animation-duration: 400ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: step-start;
+
+	-webkit-animation-name: bird-fly;
+	-webkit-animation-duration: 400ms;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: step-start;
+}
+/**/
+@keyframes bird-fly {
+	0% {
+		background-position: -182px 0px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	75% {
+		background-position: -91px 0px;
+	}
+	100% {
+		background-position: -182px 0px;
+	}	
+}
+@-webkit-keyframes bird-fly {
+	0% {
+		background-position: -182px 0px;
+	}
+	50% {
+		background-position: 0px 0px;
+	}
+	75% {
+		background-position: -91px 0px;
+	}
+	100% {
+		background-position: -182px 0px;
+	}	
+}

@@ -8,7 +8,10 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
+    
+    <script src="javascripts/jquery.js"></script> 
+    <script src="javascripts/jquery.transit.js"></script>
+    <script src="javascripts/bird.js"></script>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -149,6 +152,45 @@
            我们把小男孩走动的图片合成一张大图再利用css技术组合进行背景定位。
            有 background-image、background-repeat、background-position。
         </p>
+
+
+        <h5>动画- animation： 扩展学习--css精灵技术练习</h5> 
+        <p>
+            小鸟动画的实现
+        </p>
+        <div class="boxShow">
+            <div class="bird birdFly" style="right:-80px;"></div>
+            <div class="bird" id="bird2"></div>
+        </div>
+        <p>
+          在页面中增加一个小鸟的HTML结构。
+          通过background-position 加载精灵图，做动画的元素都是需要设置position: absolute
+          这样才能独立漂浮文档流，让页面的重绘更少。
+          图片变化部分使用 animation属性，通过设置animation-timing-function:step-start;
+          马上跳到动画每一帧结束的状态，这样就让动画执行一帧一帧的切换效果。
+        </p>
+        <p>接下来我们结合下js技术，让小鸟飞到左边来。</p>
+        <p>我们引入了 jquery 和 jquery.transit 第三方插件，用来处理dom和动画效果。具体代码如下：</p>
+        <pre>
+            var bird = {
+                elem: $("#bird2"),
+                fly: function(){
+                    var me = this;
+                    var width = $('.boxShow').width();
+                    me.elem.addClass('birdFly').transition({
+                        right: width
+                    }, 15000, 'linear', function(){
+                        me.elem.css({'right':0});
+                        me.fly();
+                    });
+                }
+            };
+
+            bird.fly();
+
+        </pre>
+        <p>技术点：小鸟移动使用了css3的transition属性。</p>
+
         </section>
 
         <aside id="sidebar">
