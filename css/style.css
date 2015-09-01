@@ -109,6 +109,11 @@ li {
 	height: 150px;
 	position: relative;
 }
+.black{
+	background-color: #000;
+	height: 200px
+}
+
 /*小鸟*/
 .bird{
 	min-width: 91px;
@@ -158,4 +163,49 @@ li {
 	100% {
 		background-position: -182px 0px;
 	}	
+}
+
+
+/* 太阳 */
+.sun {
+	width: 60px;
+	height: 60px;
+	bottom:5%;
+	position: absolute;
+	right:0;
+	background: url(../resource/images/sun.png) no-repeat;
+	background-size: cover;
+}
+
+.rotation {
+	animation-name: rotation;
+	animation-duration: 15s;
+	animation-iteration-count: infinite;
+	-webkit-animation-name: rotation;
+	-webkit-animation-duration: 15s;
+	-webkit-animation-iteration-count: infinite;
+}
+
+@keyframes rotation {
+	0% {
+		transform: translateX(0) translateY(0);
+	}
+	50%  {
+		transform: translateX(-310px) translateY(-100px);
+	}
+	100% {
+		transform: translateX(-620px) translateY(0);
+	}
+}
+
+@-webkit-keyframes rotation {
+	0% {
+		-webkit-transform: translateX(0) translateY(0);
+	}
+	50%  {
+		-webkit-transform: translateX(-310px) translateY(-100px);
+	}
+	100% {
+		-webkit-transform: translateX(-620px) translateY(0);
+	}
 }
